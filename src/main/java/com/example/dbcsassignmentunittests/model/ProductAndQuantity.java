@@ -11,6 +11,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 public class ProductAndQuantity {
+    public ProductAndQuantity(Product product, Long quantity) {
+        this.product = product;
+        this.quantity = quantity;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

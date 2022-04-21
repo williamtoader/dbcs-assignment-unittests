@@ -21,7 +21,4 @@ public class Product {
     private String description;
     private Double price;
     private Long stock;
-
-    //@OneToMany
-    //List<ProductAndQuantity> productAndQuantityList;
 }
