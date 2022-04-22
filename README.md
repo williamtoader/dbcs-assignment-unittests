@@ -8,9 +8,9 @@ DB Cloud School Assignment
 
 ## Tasks:
 ### Assignment: Unit tests
-- [ ] Create models for User, Product, Wishlist and Cart
+- [x] Create models for User, Product, Wishlist and Cart
 - [ ] Create test data for each of those
-- [ ] Create CRUD services
+- [x] Create CRUD services
 - [ ] Write data loader for tests
 - [ ] Write tests for service methods
 - [ ] Create controllers
