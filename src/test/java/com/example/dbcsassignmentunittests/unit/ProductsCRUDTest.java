@@ -1,7 +1,6 @@
 package com.example.dbcsassignmentunittests.unit;
 
 import com.example.dbcsassignmentunittests.model.Product;
-
 import com.example.dbcsassignmentunittests.service.ProductService;
 import com.example.dbcsassignmentunittests.utils.ResourceLoader;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -33,13 +32,13 @@ public class ProductsCRUDTest {
                 new TypeReference<>() {
                 }
         );
-        for (Product product: productList) {
+        for (Product product : productList) {
             assert productService.save(product).equals(product);
         }
-        for (Product product: productList) {
+        for (Product product : productList) {
             assert productService.getById(product.getCode()).equals(product);
         }
-        for (Product product: productService.getAll()) {
+        for (Product product : productService.getAll()) {
             assert productList.contains(product);
         }
     }
@@ -52,17 +51,17 @@ public class ProductsCRUDTest {
                 new TypeReference<>() {
                 }
         );
-        for (Product product: productList) {
+        for (Product product : productList) {
             assert productService.save(product).equals(product);
         }
-        for (Product product: productList) {
+        for (Product product : productList) {
             product.setName("TEST-" + product.getName());
             assert productService.save(product).equals(product);
         }
-        for (Product product: productList) {
+        for (Product product : productList) {
             assert productService.getById(product.getCode()).equals(product);
         }
-        for (Product product: productService.getAll()) {
+        for (Product product : productService.getAll()) {
             assert productList.contains(product);
         }
     }
@@ -75,10 +74,10 @@ public class ProductsCRUDTest {
                 new TypeReference<>() {
                 }
         );
-        for (Product product: productList) {
+        for (Product product : productList) {
             assert productService.save(product).equals(product);
         }
-        for (Product product: productList) {
+        for (Product product : productList) {
             productService.delete(product.getCode());
         }
         assert productService.getAll().size() == 0;

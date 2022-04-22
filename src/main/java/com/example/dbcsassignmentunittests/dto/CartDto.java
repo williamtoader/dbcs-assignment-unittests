@@ -11,15 +11,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CartDto {
+    String username;
+    List<ProductCodeAndQuantity> products;
+    @JsonProperty
+    Long id;
+
     @Data
     public static class ProductCodeAndQuantity {
         String code;
         Long quantity;
     }
-
-    String username;
-    List<ProductCodeAndQuantity> products;
-
-    @JsonProperty
-    Long id;
 }

@@ -1,7 +1,6 @@
 package com.example.dbcsassignmentunittests.service;
 
 import com.example.dbcsassignmentunittests.model.Product;
-import com.example.dbcsassignmentunittests.model.ProductAndQuantity;
 import com.example.dbcsassignmentunittests.repository.ProductAndQuantityRepository;
 import com.example.dbcsassignmentunittests.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;

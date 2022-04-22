@@ -15,16 +15,16 @@ DB Cloud School Assignment
 - [x] Write tests for service methods
 - [x] Create controllers
     - [x] Cart
-      - [ ] Basic CRUD
-      - [ ] List all carts sorted by price total
+      - [x] Basic CRUD
+      - [x] List all carts sorted by price total
     - [x] User
-      - [ ] Basic CRUD
-      - [ ] List all sorted by number of orders (Order history)
+      - [x] Basic CRUD
+      - [x] List all sorted by number of orders (Order history)
     - [x] Product
-        - [ ] Basic CRUD
+        - [x] Basic CRUD
     - [ ] Wishlist
         - [ ] Basic CRUD
-- [ ] SwaggerUI
+- [x] SwaggerUI
 ### Assignment: Security 2
 - [ ] Implement JWT auth for private endpoints
 - [ ] Allow SwaggerUI to be reached without auth

@@ -10,8 +10,10 @@ import com.example.dbcsassignmentunittests.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.function.BinaryOperator;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,11 +49,11 @@ public class CartService {
 
     public Cart save(Long id, String username, Map<String, Long> productIdsAndQuantities) {
         List<ProductAndQuantity> productAndQuantityList = new ArrayList<>();
-        productIdsAndQuantities.forEach((productCode, quantity) -> 
-            productAndQuantityList.add(productAndQuantityRepository.save(new ProductAndQuantity(
-                    productRepository.getById(productCode),
-                    quantity
-            )))
+        productIdsAndQuantities.forEach((productCode, quantity) ->
+                productAndQuantityList.add(productAndQuantityRepository.save(new ProductAndQuantity(
+                        productRepository.getById(productCode),
+                        quantity
+                )))
         );
         return computeTotal(cartRepository.save(
                 new Cart(
@@ -64,7 +66,7 @@ public class CartService {
 
     public Cart save(CartDto dto) {
         Map<String, Long> productIdsAndQuantities = new HashMap<>();
-        for (CartDto.ProductCodeAndQuantity o: dto.getProducts()) {
+        for (CartDto.ProductCodeAndQuantity o : dto.getProducts()) {
             productIdsAndQuantities.merge(o.getCode(), o.getQuantity(), Long::sum);
         }
         return save(dto.getId(), dto.getUsername(), productIdsAndQuantities);
@@ -77,7 +79,7 @@ public class CartService {
     public Cart add(CartDto dto) {
         dto.setId(null);
         Map<String, Long> productIdsAndQuantities = new HashMap<>();
-        for (CartDto.ProductCodeAndQuantity o: dto.getProducts()) {
+        for (CartDto.ProductCodeAndQuantity o : dto.getProducts()) {
             productIdsAndQuantities.merge(o.getCode(), o.getQuantity(), Long::sum);
         }
         return add(dto.getUsername(), productIdsAndQuantities);

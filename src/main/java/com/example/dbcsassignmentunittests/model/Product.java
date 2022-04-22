@@ -1,7 +1,6 @@
 package com.example.dbcsassignmentunittests.model;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

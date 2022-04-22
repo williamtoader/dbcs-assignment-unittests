@@ -37,7 +37,7 @@ public class CartCRUDTest {
     List<Product> productList;
     List<User> userList;
 
-    public void loadData() throws Exception{
+    public void loadData() throws Exception {
         cartDtoList = objectMapper.readValue(
                 ResourceLoader.loadTestData("carts"),
                 new TypeReference<>() {
@@ -64,16 +64,16 @@ public class CartCRUDTest {
     @Order(1)
     public void Given_Carts_When_AddingToDatabase_Then_RetrievalSuccessful() throws Exception {
         loadData();
-        for(User user: userList) {
+        for (User user : userList) {
             userService.save(user);
         }
-        for(Product product: productList) {
+        for (Product product : productList) {
             productService.save(product);
         }
         Long firstId = null;
-        for(CartDto cartDto: cartDtoList) {
+        for (CartDto cartDto : cartDtoList) {
             Long id = cartService.add(cartDto).getId();
-            if(firstId == null) firstId = id;
+            if (firstId == null) firstId = id;
         }
         assert cartService.getAllSortedByTotal().stream()
                 .map(Cart::getComputedTotal)
@@ -87,16 +87,16 @@ public class CartCRUDTest {
     @Order(2)
     public void Given_Carts_When_Updating_Then_UpdateSuccessful() throws Exception {
         loadData();
-        for(User user: userList) {
+        for (User user : userList) {
             userService.save(user);
         }
-        for(Product product: productList) {
+        for (Product product : productList) {
             productService.save(product);
         }
         Long firstId = null;
-        for(CartDto cartDto: cartDtoList) {
+        for (CartDto cartDto : cartDtoList) {
             Long id = cartService.add(cartDto).getId();
-            if(firstId == null) firstId = id;
+            if (firstId == null) firstId = id;
         }
         assert cartService.getAllSortedByTotal().stream()
                 .map(Cart::getComputedTotal)
@@ -106,7 +106,7 @@ public class CartCRUDTest {
         assert cartService.get(firstId).getUser().getUsername().equals("d34th");
 
         CartDto cartDto = cartDtoList.get(0);
-        cartDto.setProducts(cartDto.getProducts().subList(0,1));
+        cartDto.setProducts(cartDto.getProducts().subList(0, 1));
         cartDto.setId(firstId);
         cartService.save(cartDto);
         assert cartService.get(firstId).getProductAndQuantityList().size() == 1;
@@ -116,17 +116,17 @@ public class CartCRUDTest {
     @Order(3)
     public void Given_Carts_When_Deleting_Then_DatabaseEmpty() throws Exception {
         loadData();
-        for(User user: userList) {
+        for (User user : userList) {
             userService.save(user);
         }
-        for(Product product: productList) {
+        for (Product product : productList) {
             productService.save(product);
         }
-        for(CartDto cartDto: cartDtoList) {
+        for (CartDto cartDto : cartDtoList) {
             cartService.add(cartDto);
         }
 
-        for(long i = 1L; i <= cartDtoList.size(); ++i) {
+        for (long i = 1L; i <= cartDtoList.size(); ++i) {
             cartService.delete(i);
         }
         assert cartService.getAllSortedByTotal().size() == 0;

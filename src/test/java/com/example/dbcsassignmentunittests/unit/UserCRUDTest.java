@@ -33,13 +33,13 @@ public class UserCRUDTest {
                 new TypeReference<>() {
                 }
         );
-        for (User user: userList) {
+        for (User user : userList) {
             userService.save(user);
         }
-        for (User user: userList) {
+        for (User user : userList) {
             assert userService.get(user.getUsername()).equals(user);
         }
-        for (User user: userService.getAll()) {
+        for (User user : userService.getAll()) {
             assert userList.contains(user);
         }
     }
@@ -52,14 +52,14 @@ public class UserCRUDTest {
                 new TypeReference<>() {
                 }
         );
-        for (User user: userList) {
+        for (User user : userList) {
             userService.save(user);
         }
-        for (User user: userList) {
+        for (User user : userList) {
             user.setAddress("Edited: " + user.getAddress());
             userService.save(user);
         }
-        for (User user: userList) {
+        for (User user : userList) {
             assert userService.get(user.getUsername()).equals(user);
         }
     }
@@ -72,10 +72,10 @@ public class UserCRUDTest {
                 new TypeReference<>() {
                 }
         );
-        for (User user: userList) {
+        for (User user : userList) {
             userService.save(user);
         }
-        for (User user: userList) {
+        for (User user : userList) {
             userService.delete(user.getUsername());
         }
         assert userService.getAll().size() == 0;

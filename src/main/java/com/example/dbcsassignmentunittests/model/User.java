@@ -1,7 +1,9 @@
 package com.example.dbcsassignmentunittests.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,25 +17,33 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
-public class User {
+@JsonIncludeProperties({
+        "username",
+        "firstName",
+        "lastName",
+        "address"
+})
+@JsonIgnoreProperties({
+        "carts"
+})
+public class User implements Comparable<User>{
+    @Id
+    String username;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany
+    @ToString.Exclude
+    List<Cart> carts;
+    private String firstName;
+    private String lastName;
+
+    private String address;
+
     public User(String username, String firstName, String lastName, String address) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
     }
-
-    @Id
-    String username;
-
-    private String firstName;
-    private String lastName;
-
-    private String address;
-
-    @OneToMany
-    @ToString.Exclude
-    List<Cart> carts;
 
     @Override
     public boolean equals(Object o) {
@@ -46,5 +56,10 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(getUsername(), getFirstName(), getLastName(), getAddress());
+    }
+
+    @Override
+    public int compareTo(User o) {
+        return Long.compare(this.carts.size(), o.carts.size());
     }
 }
