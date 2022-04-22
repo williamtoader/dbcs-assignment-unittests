@@ -48,10 +48,10 @@ public class CartService {
     public Cart save(Long id, String username, Map<String, Long> productIdsAndQuantities) {
         List<ProductAndQuantity> productAndQuantityList = new ArrayList<>();
         productIdsAndQuantities.forEach((productCode, quantity) -> 
-            productAndQuantityList.add(new ProductAndQuantity(
+            productAndQuantityList.add(productAndQuantityRepository.save(new ProductAndQuantity(
                     productRepository.getById(productCode),
                     quantity
-            ))
+            )))
         );
         return computeTotal(cartRepository.save(
                 new Cart(

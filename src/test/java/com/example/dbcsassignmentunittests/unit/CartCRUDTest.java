@@ -70,12 +70,65 @@ public class CartCRUDTest {
         for(Product product: productList) {
             productService.save(product);
         }
+        Long firstId = null;
         for(CartDto cartDto: cartDtoList) {
-            cartService.add(cartDto);
+            Long id = cartService.add(cartDto).getId();
+            if(firstId == null) firstId = id;
         }
         assert cartService.getAllSortedByTotal().stream()
                 .map(Cart::getComputedTotal)
                 .collect(Collectors.toList())
                 .equals(cartTotalsSorted);
+
+        assert cartService.get(firstId).getUser().getUsername().equals("d34th");
+    }
+
+    @Test
+    @Order(2)
+    public void Given_Carts_When_Updating_Then_UpdateSuccessful() throws Exception {
+        loadData();
+        for(User user: userList) {
+            userService.save(user);
+        }
+        for(Product product: productList) {
+            productService.save(product);
+        }
+        Long firstId = null;
+        for(CartDto cartDto: cartDtoList) {
+            Long id = cartService.add(cartDto).getId();
+            if(firstId == null) firstId = id;
+        }
+        assert cartService.getAllSortedByTotal().stream()
+                .map(Cart::getComputedTotal)
+                .collect(Collectors.toList())
+                .equals(cartTotalsSorted);
+
+        assert cartService.get(firstId).getUser().getUsername().equals("d34th");
+
+        CartDto cartDto = cartDtoList.get(0);
+        cartDto.setProducts(cartDto.getProducts().subList(0,1));
+        cartDto.setId(firstId);
+        cartService.save(cartDto);
+        assert cartService.get(firstId).getProductAndQuantityList().size() == 1;
+    }
+
+    @Test
+    @Order(3)
+    public void Given_Carts_When_Deleting_Then_DatabaseEmpty() throws Exception {
+        loadData();
+        for(User user: userList) {
+            userService.save(user);
+        }
+        for(Product product: productList) {
+            productService.save(product);
+        }
+        for(CartDto cartDto: cartDtoList) {
+            cartService.add(cartDto);
+        }
+
+        for(long i = 1L; i <= cartDtoList.size(); ++i) {
+            cartService.delete(i);
+        }
+        assert cartService.getAllSortedByTotal().size() == 0;
     }
 }
