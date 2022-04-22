@@ -20,4 +20,17 @@ public class Product {
     private String description;
     private Double price;
     private Long stock;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return getCode().equals(product.getCode()) && getName().equals(product.getName()) && Objects.equals(getDescription(), product.getDescription()) && getPrice().equals(product.getPrice()) && getStock().equals(product.getStock());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getCode(), getName(), getDescription(), getPrice(), getStock());
+    }
 }

@@ -1,0 +1,37 @@
+[
+  {
+    "code": "MT-DBSC",
+    "name": "Moturi de basca",
+    "description": "Cele mai bestiale moturi de basca.",
+    "price": 5.2,
+    "stock": 101
+  },
+  {
+    "code": "STCL-DLMP",
+    "name": "Sticle de lampa",
+    "description": "Exact ce aveam nevoie.",
+    "price": 20.1,
+    "stock": 102
+  },
+  {
+    "code": "HM-MR",
+    "name": "Ciocan",
+    "description": "Hatz, bate cuie.",
+    "price": 53,
+    "stock": 103
+  },
+  {
+    "code": "NAILS-2.5",
+    "name": "Cuie",
+    "description": "Cuie 2.5mm. Motiv perfect sa dai cu ciocanul in perete ca sa te auda vecinii.",
+    "price": 10.1,
+    "stock": 104
+  },
+  {
+    "code": "MUFF-434",
+    "name": "Antifoane",
+    "description": "Deoarece da vecinu cu ciocanu",
+    "price": 123,
+    "stock": 105
+  }
+]

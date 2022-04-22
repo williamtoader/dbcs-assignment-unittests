@@ -1,0 +1,67 @@
+[
+  {
+    "username": "d34th",
+    "products": [
+      {
+        "code": "MT-DBSC",
+        "quantity": 10
+      },
+      {
+        "code": "STCL-DLMP",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "username": "mario",
+    "products": [
+      {
+        "code": "HM-MR",
+        "quantity": 1
+      },
+      {
+        "code": "NAILS-2.5",
+        "quantity": 3
+      }
+    ]
+  },
+  {
+    "username": "madnerd",
+    "products": [
+      {
+        "code": "MUFF-434",
+        "quantity": 1
+      },
+      {
+        "code": "STCL-DLMP",
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "username": "gigachad",
+    "products": [
+      {
+        "code": "HM-MR",
+        "quantity": 1
+      },
+      {
+        "code": "NAILS-2.5",
+        "quantity": 5
+      }
+    ]
+  },
+  {
+    "username": "gigachad",
+    "products": [
+      {
+        "code": "STCL-DLMP",
+        "quantity": 2
+      },
+      {
+        "code": "MT-DBSC",
+        "quantity": 20
+      }
+    ]
+  }
+]
