@@ -3,7 +3,9 @@ DB Cloud School Assignment
 **Spring Advanced - Security 2**  
 
 ## JWT Authenticated Endpoints:
-
+`/carts`
+`/products`
+`/users`
 ---
 
 ## Tasks:
@@ -22,12 +24,12 @@ DB Cloud School Assignment
       - [x] List all sorted by number of orders (Order history)
     - [x] Product
         - [x] Basic CRUD
-    - [ ] Wishlist
-        - [ ] Basic CRUD
+    - [x] Wishlist
+        - [x] Basic CRUD
 - [x] SwaggerUI
 ### Assignment: Security 2
-- [ ] Implement JWT auth for private endpoints
-- [ ] Allow SwaggerUI to be reached without auth
+- [x] Implement JWT auth for private endpoints
+- [x] Allow SwaggerUI to be reached without auth
 
 ### Optional
 - [ ] Integration tests
